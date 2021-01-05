@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using OopSubmitStatistic.Models;
+using OopSubmitStatistic.Tables;
+using Spectre.Console;
 
 namespace OopSubmitStatistic
 {
@@ -8,7 +12,7 @@ namespace OopSubmitStatistic
     {
         static void Main(string[] args)
         {
-            var tableParser = TableParser.Create("token");
+            var tableParser = TableParser.Create("");
 
             List<StudentRow> result = new List<StudentRow>();
             var groupList = new List<string>
@@ -41,7 +45,16 @@ namespace OopSubmitStatistic
                 result.AddRange(studentSubjectScores);
             }
 
+            var ignores = File.ReadAllLines("ignore.txt");
 
+            result = result
+                .Where(s => !ignores.Contains(s.Name))
+                .ToList();
+
+            var groupStatistic = new GroupStatistic(result);
+            groupStatistic.Groups.Add(new GroupRow("IS avg", result));
+            groupStatistic.Generate();
+            AnsiConsole.Render(groupStatistic.Table);
         }
     }
 }
