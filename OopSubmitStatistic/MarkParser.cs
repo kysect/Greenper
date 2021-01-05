@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using Google.Apis.Logging;
 using Google.Apis.Sheets.v4.Data;
+using OopSubmitStatistic.Models;
 
 namespace OopSubmitStatistic
 {
-    public class MarkParser : ITableRequest<List<StudentSubjectScore>>
+    public class MarkParser : ITableRequest<List<StudentRow>>
     {
         private readonly TableStringHelper _helper;
 
@@ -18,22 +17,14 @@ namespace OopSubmitStatistic
         public string Id => _helper.Id;
         public string Range => _helper.Range;
 
-        public List<StudentSubjectScore> Parse(ValueRange values)
+        public List<StudentRow> Parse(ValueRange values)
         {
-            var result = new List<StudentSubjectScore>();
+            var result = new List<StudentRow>();
             foreach (IList<object> row in values.Values)
             {
-                object name = row[_helper.NameColumnNum];
-                object score = row[_helper.ScoreColumnNum];
-                if (name is not null && score is not null)
+                if (StudentRow.Parse(row, out var student))
                 {
-                    string fullName = string.Join(" ", _helper.NameColumns.Select(c => row[c]));
-
-                    result.Add(new StudentSubjectScore(fullName,
-                        score.ToString()));
-                }
-                else
-                {
+                    result.Add(student);
                 }
             }
 
