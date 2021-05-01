@@ -21,7 +21,18 @@ namespace OopSubmitStatistic.Models
         }
 
         public double AverageSum => Students.Average(s => s.Sum);
-        public double Pass40Points => Percent(Students, s => s.Sum >= 40);
+        public double AverageExam
+        {
+            get
+            {
+                if (!Students.Any(s => s.Exam > 0))
+                    return 0;
+                return Students.Where(s => s.Exam > 0).Average(s => s.Exam);
+            }
+        }
+
+        public double Below40Points => Percent(Students, s => s.Sum < 40);
+        public double Between40And60 => Percent(Students, s => s.Sum >= 40 && s.Sum < 60);
         public double Pass60Points => Percent(Students, s => s.Sum >= 60);
     }
 }

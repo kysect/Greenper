@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -55,6 +55,7 @@ namespace OopSubmitStatistic
             groupStatistic.Groups.Add(new GroupRow("IS avg", result));
             groupStatistic.Generate();
             AnsiConsole.Render(groupStatistic.Table);
+            AnsiConsole.Render(groupStatistic.Table2);
         }
     }
 }
