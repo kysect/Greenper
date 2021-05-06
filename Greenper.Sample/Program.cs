@@ -11,10 +11,10 @@ namespace Greenper.Sample
         static async Task Main(string[] args)
         {
             GoogleSheetsApiAccessor accessor = new GoogleSheetsApiAccessor();
-            var spreadsheet = await accessor.GetSpreadsheetAsync("1H75MoSvL-165x5aM-p26eFZcY57UYx0gPtOHhvpGYGw");
+            var spreadsheet = await accessor.GetSpreadsheet("1H75MoSvL-165x5aM-p26eFZcY57UYx0gPtOHhvpGYGw");
             foreach (var googleSheetInfo in spreadsheet.GoogleSheetInfos)
             {
-                var sheet = await accessor.GetSheetAsync("1H75MoSvL-165x5aM-p26eFZcY57UYx0gPtOHhvpGYGw", $"{googleSheetInfo.Title}!A1:Y26");
+                var sheet = await accessor.GetSheet("1H75MoSvL-165x5aM-p26eFZcY57UYx0gPtOHhvpGYGw", $"{googleSheetInfo.Title}!A1:Y26");
             }
         }
     }

@@ -23,14 +23,14 @@ namespace Greenper.Adapters.GoogleSheets
         {
         }
 
-        public async Task<SheetResponse> GetSheetAsync(String sheetId, String range)
+        public async Task<SheetResponse> GetSheet(String sheetId, String range)
         {
             SpreadsheetsResource.ValuesResource.GetRequest requestData = SheetsService.Spreadsheets.Values.Get(sheetId, range);
             ValueRange valueRange = await requestData.ExecuteAsync();
             return new SheetResponse(valueRange.Range, valueRange.MajorDimension, valueRange.Values);
         }
 
-        public async Task<SpreadsheetResponse> GetSpreadsheetAsync(String spreadsheetId)
+        public async Task<SpreadsheetResponse> GetSpreadsheet(String spreadsheetId)
         {
             SpreadsheetsResource.GetRequest requestData = SheetsService.Spreadsheets.Get(spreadsheetId);
             Spreadsheet spreadsheet = await requestData.ExecuteAsync();
