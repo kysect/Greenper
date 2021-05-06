@@ -2,7 +2,7 @@
 
 namespace Greenper.Attributes
 {
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
+    [AttributeUsage(AttributeTargets.Property)]
     public class AssignmentColumnsAttribute : Attribute
     {
         public String[] Columns { get; }
