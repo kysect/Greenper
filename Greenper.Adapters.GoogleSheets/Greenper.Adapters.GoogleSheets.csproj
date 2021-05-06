@@ -2,10 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>d3d34739-a8ec-4cc6-b154-816539261b37</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Google.Apis.Sheets.v4" Version="1.51.0.2272" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+    <Folder Include="Models\" />
+    <Folder Include="Providers\" />
   </ItemGroup>
 
 </Project>
