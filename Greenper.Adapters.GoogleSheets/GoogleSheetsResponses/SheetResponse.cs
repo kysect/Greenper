@@ -9,10 +9,10 @@ namespace Greenper.Adapters.GoogleSheets.GoogleSheetsResponses
         public string MajorDimension { get; }
         public IList<IList<object>> Values { get; }
 
-        public SheetResponse(String majorDimension, String range, IList<IList<Object>> values)
+        public SheetResponse(String range, String majorDimension, IList<IList<Object>> values)
         {
-            MajorDimension = majorDimension;
             Range = range;
+            MajorDimension = majorDimension;
             Values = values;
         }
     }
