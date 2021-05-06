@@ -6,7 +6,7 @@ namespace Greenper.Adapters.GoogleSheets
 {
     public interface IGoogleSheetsApiAccessor
     {
-        Task<SheetResponse> GetSheetAsync(String sheetId, String range);
-        Task<SpreadsheetResponse> GetSpreadsheetAsync(String spreadsheetId);
+        Task<SheetResponse> GetSheet(String sheetId, String range);
+        Task<SpreadsheetResponse> GetSpreadsheet(String spreadsheetId);
     }
 }
