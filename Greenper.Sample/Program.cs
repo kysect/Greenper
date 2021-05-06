@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Google.Apis.Sheets.v4.Data;
 using Greenper.Adapters.GoogleSheets;
+using Greenper.Core.Validation;
 
 namespace Greenper.Sample
 {
@@ -12,10 +13,12 @@ namespace Greenper.Sample
         {
             GoogleSheetsApiAccessor accessor = new GoogleSheetsApiAccessor();
             var spreadsheet = await accessor.GetSpreadsheet("1H75MoSvL-165x5aM-p26eFZcY57UYx0gPtOHhvpGYGw");
-            foreach (var googleSheetInfo in spreadsheet.GoogleSheetInfos)
-            {
-                var sheet = await accessor.GetSheet("1H75MoSvL-165x5aM-p26eFZcY57UYx0gPtOHhvpGYGw", $"{googleSheetInfo.Title}!A1:Y26");
-            }
+            //foreach (var googleSheetInfo in spreadsheet.GoogleSheetInfos)
+            //{
+            //    var sheet = await accessor.GetSheet("1H75MoSvL-165x5aM-p26eFZcY57UYx0gPtOHhvpGYGw", $"{googleSheetInfo.Title}!A1:Y26");
+            //}
+            var validator = new AssignmentColumnValidator<StudentActivityRow>(new ValidationContext<StudentActivityRow>());
+            var validationResult = validator.Validate();
         }
     }
 }
