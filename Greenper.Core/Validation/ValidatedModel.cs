@@ -9,7 +9,7 @@ namespace Greenper.Core.Validation
 
         public ValidatedModel(String columnIndex, Type valueType)
         {
-            ColumnIndex = columnIndex;
+            ColumnIndex = columnIndex.ToUpper();
             ValueType = valueType;
         }
     }
