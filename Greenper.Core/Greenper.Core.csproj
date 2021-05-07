@@ -1,14 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Greenper.Adapters.GoogleSheets\Greenper.Adapters.GoogleSheets.csproj" />
     <ProjectReference Include="..\Greenper.Attributes\Greenper.Attributes.csproj" />
-    <ProjectReference Include="..\Greenper.Core\Greenper.Core.csproj" />
   </ItemGroup>
 
 </Project>
