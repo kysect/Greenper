@@ -7,19 +7,12 @@ using Greenper.Core.Extensions;
 
 namespace Greenper.Core.Validation
 {
-    public class AssignmentColumnValidator<T>
+    public class AssignmentColumnValidator
     {
-        public ValidationContext<T> Context { get; }
-
-        public AssignmentColumnValidator(ValidationContext<T> context)
+        public ValidationResult Validate<T>(ValidationContext<T> context)
         {
-            Context = context;
-        }
-
-        public ValidationResult Validate()
-        {
-            var validationResult = ValidateColumn()
-                .Concat(ValidateColumns())
+            var validationResult = ValidateColumn(context)
+                .Concat(ValidateColumns(context))
                 .ToList();
 
             if (validationResult.HasDuplicates())
@@ -30,9 +23,9 @@ namespace Greenper.Core.Validation
             return new ValidationResult(validationResult);
         }
 
-        private IEnumerable<ValidatedModel> ValidateColumn()
+        private IEnumerable<ValidatedModel> ValidateColumn<T>(ValidationContext<T> context)
         {
-            var properties = GetPropertiesWith<AssignmentColumnAttribute>().ToList();
+            List<PropertyInfo> properties = GetPropertiesWith<AssignmentColumnAttribute, T>(context).ToList();
             foreach (var property in properties)
             {
                 var columnAttribute = GetPropertyAttributeOfType<AssignmentColumnAttribute>(property);
@@ -45,9 +38,9 @@ namespace Greenper.Core.Validation
             }
         }
 
-        private IEnumerable<ValidatedModel> ValidateColumns()
+        private IEnumerable<ValidatedModel> ValidateColumns<T>(ValidationContext<T> context)
         {
-            var properties = GetPropertiesWith<AssignmentColumnsAttribute>().ToList();
+            List<PropertyInfo> properties = GetPropertiesWith<AssignmentColumnsAttribute, T>(context).ToList();
             foreach (var property in properties)
             {
                 var columnAttribute = GetPropertyAttributeOfType<AssignmentColumnsAttribute>(property);
@@ -63,14 +56,14 @@ namespace Greenper.Core.Validation
             }
         }
 
-        private IEnumerable<PropertyInfo> GetPropertiesWith<TAttribute>() where TAttribute : Attribute
+        private IEnumerable<PropertyInfo> GetPropertiesWith<TAttribute, T>(ValidationContext<T> context) where TAttribute : Attribute
         {
-            return Context.Model.GetProperties().Where(property => property.IsDefined(typeof(TAttribute), false));
+            return context.Model.GetProperties().Where(property => property.IsDefined(typeof(TAttribute), false));
         }
 
         private TAttribute GetPropertyAttributeOfType<TAttribute>(MemberInfo property) where TAttribute : Attribute
         {
-            return (TAttribute) property.GetCustomAttribute(typeof(TAttribute), false);
+            return (TAttribute)property.GetCustomAttribute(typeof(TAttribute), false);
         }
     }
 }
