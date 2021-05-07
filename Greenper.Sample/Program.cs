@@ -17,8 +17,7 @@ namespace Greenper.Sample
             //{
             //    var sheet = await accessor.GetSheet("1H75MoSvL-165x5aM-p26eFZcY57UYx0gPtOHhvpGYGw", $"{googleSheetInfo.Title}!A1:Y26");
             //}
-            var validator = new AssignmentColumnValidator<StudentActivityRow>(new ValidationContext<StudentActivityRow>());
-            var validationResult = validator.Validate();
+            var validationResult = new AssignmentColumnValidator().Validate(new ValidationContext<StudentActivityRow>());
         }
     }
 }
