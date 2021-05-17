@@ -6,8 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Greenper.Adapters.GoogleSheets\Greenper.Adapters.GoogleSheets.csproj" />
-    <ProjectReference Include="..\Greenper.Attributes\Greenper.Attributes.csproj" />
     <ProjectReference Include="..\Greenper.Core\Greenper.Core.csproj" />
   </ItemGroup>
 
