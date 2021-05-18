@@ -9,8 +9,7 @@ namespace Greenper.Sample
     {
         static async Task Main(string[] args)
         {
-            var mappingResult = await new Mapper(new GoogleSheetsApiAccessor())
-                .Map<StudentActivityRow>("1g2NCYFTBjw0CwyyMfl8wliYENStSoC3ws5S7nO7A4OQ", "Лист1!B2:H10");
+            var mappingResult = await new Mapper().Map<StudentActivityRow>("1g2NCYFTBjw0CwyyMfl8wliYENStSoC3ws5S7nO7A4OQ", "Лист1!B2:H10");
         }
     }
 }
