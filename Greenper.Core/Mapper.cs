@@ -33,23 +33,20 @@ namespace Greenper.Core
         {
             var mappedModels = new List<T>();
             var range = request.Sheet.Range;
+            PropertyInfo[] properties = typeof(T).GetProperties();
 
-            for (var i = 0; i < request.Sheet.Values.Count; i++)
+            foreach (var row in request.Sheet.Values)
             {
                 T instance = Activator.CreateInstance<T>();
-                IList<Object> row = request.Sheet.Values[i];
-                PropertyInfo[] properties = instance.GetType().GetProperties();
 
                 foreach (var property in properties)
                 {
-                    if (property is null) throw new NullReferenceException();
-
                     var validatedModels = request
                         .ValidationResult
                         .ValidatedModels
                         .GetValidatedModelsForProperty(property.Name);
 
-                    var propertyValue = validatedModels.MapToProperty(property, row, range);
+                    Object propertyValue = validatedModels.MapToProperty(property, row, range);
                     property.SetValue(instance, propertyValue);
                 }
 
