@@ -14,17 +14,23 @@ namespace Greenper.Core
     public class Mapper
     {
         public IGoogleSheetsApiAccessor GoogleSheetsApiAccessor { get; }
+        public AssignmentColumnValidator Validator { get; }
 
         public Mapper(IGoogleSheetsApiAccessor googleSheetsApiAccessor)
         {
             GoogleSheetsApiAccessor = googleSheetsApiAccessor;
+            Validator = new AssignmentColumnValidator();
+        }
+
+        public Mapper() : this(new GoogleSheetsApiAccessor())
+        {
         }
 
         public async Task<MappingResult<T>> Map<T>(String sheetId, String range)
         {
             var sheet = await GoogleSheetsApiAccessor.GetSheet(sheetId, range);
             var request = new MappingRequest(sheet, 
-                new AssignmentColumnValidator().Validate(new ValidationContext<T>()));
+                Validator.Validate(new ValidationContext<T>()));
 
             return Map<T>(request);
         }
