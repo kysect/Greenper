@@ -4,9 +4,9 @@ namespace Greenper.Core.Mapping
 {
     public class MappingResult<T>
     {
-        public ICollection<T> MappedModels { get; }
+        public IReadOnlyCollection<T> MappedModels { get; }
 
-        public MappingResult(ICollection<T> mappedModels)
+        public MappingResult(IReadOnlyCollection<T> mappedModels)
         {
             MappedModels = mappedModels;
         }
