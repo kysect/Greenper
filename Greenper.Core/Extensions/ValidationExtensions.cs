@@ -45,7 +45,12 @@ namespace Greenper.Core.Extensions
             Char.ToUpper(letter) >= 'A' && Char.ToUpper(letter) <= 'Z';
 
         public static Type GetPropertyElementsType(this PropertyInfo property) => property.PropertyType.IsGenericType
-            ? property.PropertyType.GenericTypeArguments[0]
+            ? property.PropertyType.GetGenericType()
             : property.PropertyType.GetElementType();
+
+        private static Type GetGenericType(this Type propertyType) =>
+            propertyType.GenericTypeArguments.Length == 1
+                ? propertyType.GenericTypeArguments[0]
+                : throw new NotSupportedException();
     }
 }
