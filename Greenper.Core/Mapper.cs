@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Greenper.Adapters.GoogleSheets;
@@ -52,7 +50,12 @@ namespace Greenper.Core
                         .ValidatedModels
                         .GetValidatedModelsForProperty(property.Name);
 
-                    Object propertyValue = validatedModels.MapToProperty(property, row, range);
+                    var fieldResolver = new ModelFieldResolver(validatedModels);
+
+                    Object propertyValue = validatedModels.Count == 1
+                        ? fieldResolver.ResolveForSingleValue(row, range)
+                        : fieldResolver.ResolveForManyValues(property, row, range);
+
                     property.SetValue(instance, propertyValue);
                 }
 
