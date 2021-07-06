@@ -51,7 +51,7 @@ namespace Greenper.Core.Mapping
                 .GetType()
                 .GetMethods()
                 .FirstOrDefault(method => method.Name == "Add" && method.GetParameters().Count<ParameterInfo>() == 1) 
-                            ?? throw new Exception();
+                            ?? throw new InvalidOperationException($"Could not find Add method in collection of type {type}.");
 
             foreach (var model in Models)
             {
