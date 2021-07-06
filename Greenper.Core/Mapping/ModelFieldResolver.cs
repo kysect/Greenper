@@ -46,12 +46,10 @@ namespace Greenper.Core.Mapping
 
         private ICollection ResolveForCollection(Type type, IList<Object> row, String range)
         {
-            var collection = Activator.CreateInstance(type) ?? throw new ArgumentException($"Could not create instance of type {type}.");
-            var addMethod = collection
-                .GetType()
-                .GetMethods()
-                .FirstOrDefault(method => method.Name == "Add" && method.GetParameters().Count<ParameterInfo>() == 1) 
-                            ?? throw new InvalidOperationException($"Could not find Add method in collection of type {type}.");
+            var collection = Activator.CreateInstance(type) ?? 
+                             throw new ArgumentException($"Could not create instance of type {type}.");
+            var addMethod = collection.GetType().GetMethod("Add", type.GenericTypeArguments) ??
+                            throw new InvalidOperationException($"Could not find Add method in collection of type {type}.");
 
             foreach (var model in Models)
             {
