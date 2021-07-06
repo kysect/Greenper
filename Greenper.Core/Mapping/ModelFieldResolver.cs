@@ -11,9 +11,9 @@ namespace Greenper.Core.Mapping
 {
     public class ModelFieldResolver
     {
-        public List<ValidatedModel> Models { get; }
+        public IReadOnlyList<ValidatedModel> Models { get; }
 
-        public ModelFieldResolver(List<ValidatedModel> models)
+        public ModelFieldResolver(IReadOnlyList<ValidatedModel> models)
         {
             Models = models;
         }
