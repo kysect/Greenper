@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Greenper.Sample", "Greenper
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Greenper.Attributes", "Greenper.Attributes\Greenper.Attributes.csproj", "{C2179A94-EDA2-47D3-B424-1A07FBCFCA36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Greenper.Core", "Greenper.Core\Greenper.Core.csproj", "{4694EBAF-2A65-4CE8-A606-2449D2BC809F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Greenper.Core", "Greenper.Core\Greenper.Core.csproj", "{4694EBAF-2A65-4CE8-A606-2449D2BC809F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

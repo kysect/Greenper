@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Greenper.Core.Validation;
 
 namespace Greenper.Core.Extensions
@@ -42,5 +43,14 @@ namespace Greenper.Core.Extensions
 
         private static Boolean IsValidLetter(this Char letter) =>
             Char.ToUpper(letter) >= 'A' && Char.ToUpper(letter) <= 'Z';
+
+        public static Type GetPropertyElementsType(this PropertyInfo property) => property.PropertyType.IsGenericType
+            ? property.PropertyType.GetGenericType()
+            : property.PropertyType.GetElementType();
+
+        private static Type GetGenericType(this Type propertyType) =>
+            propertyType.GenericTypeArguments.Length == 1
+                ? propertyType.GenericTypeArguments[0]
+                : throw new NotSupportedException();
     }
 }
