@@ -46,7 +46,7 @@ namespace Greenper.Core.Mapping
 
         private ICollection ResolveForCollection(Type type, IList<Object> row, String range)
         {
-            var collection = Activator.CreateInstance(type) ?? throw new Exception($"Could not create instance of type {type}.");
+            var collection = Activator.CreateInstance(type) ?? throw new ArgumentException($"Could not create instance of type {type}.");
             var addMethod = collection
                 .GetType()
                 .GetMethods()
