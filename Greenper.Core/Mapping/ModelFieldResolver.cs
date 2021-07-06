@@ -26,11 +26,11 @@ namespace Greenper.Core.Mapping
             return parsedCellValue;
         }
 
-        public Object ResolveForManyValues(PropertyInfo property, IList<Object> row, String range) => property.PropertyType.BaseType == typeof(Array)
+        public ICollection ResolveForManyValues(PropertyInfo property, IList<Object> row, String range) => property.PropertyType.BaseType == typeof(Array)
             ? ResolveForArray(property.PropertyType.GetElementType(), row, range)
             : ResolveForCollection(property.PropertyType, row, range);
 
-        private Array ResolveForArray(Type type, IList<Object> row, String range)
+        private ICollection ResolveForArray(Type type, IList<Object> row, String range)
         {
             var array = Array.CreateInstance(type, Models.Count);
             for (var modelIndex = 0; modelIndex < Models.Count; modelIndex++)
