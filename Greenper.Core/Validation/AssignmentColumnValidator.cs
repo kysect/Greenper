@@ -34,7 +34,7 @@ namespace Greenper.Core.Validation
                     throw new ArgumentException($"Invalid column index: {columnAttribute.Column}");
                 }
 
-                yield return new ValidatedModel(columnAttribute.Column, property.PropertyType);
+                yield return new ValidatedModel(columnAttribute.Column, property.PropertyType, property.Name);
             }
         }
 
@@ -51,7 +51,7 @@ namespace Greenper.Core.Validation
                         throw new ArgumentException($"Invalid column index: {column}");
                     }
 
-                    yield return new ValidatedModel(column, property.PropertyType.GetElementType());
+                    yield return new ValidatedModel(column, property.GetPropertyElementsType(), property.Name);
                 }
             }
         }

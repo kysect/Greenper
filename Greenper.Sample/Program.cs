@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using Google.Apis.Sheets.v4.Data;
 using Greenper.Adapters.GoogleSheets;
-using Greenper.Core.Validation;
+using Greenper.Core;
 
 namespace Greenper.Sample
 {
@@ -11,13 +9,7 @@ namespace Greenper.Sample
     {
         static async Task Main(string[] args)
         {
-            GoogleSheetsApiAccessor accessor = new GoogleSheetsApiAccessor();
-            var spreadsheet = await accessor.GetSpreadsheet("1H75MoSvL-165x5aM-p26eFZcY57UYx0gPtOHhvpGYGw");
-            //foreach (var googleSheetInfo in spreadsheet.GoogleSheetInfos)
-            //{
-            //    var sheet = await accessor.GetSheet("1H75MoSvL-165x5aM-p26eFZcY57UYx0gPtOHhvpGYGw", $"{googleSheetInfo.Title}!A1:Y26");
-            //}
-            var validationResult = new AssignmentColumnValidator().Validate(new ValidationContext<StudentActivityRow>());
+            var mappingResult = await new Mapper().Map<StudentActivityRow>("1g2NCYFTBjw0CwyyMfl8wliYENStSoC3ws5S7nO7A4OQ", "Лист1!B2:H10");
         }
     }
 }
