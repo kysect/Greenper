@@ -1,4 +1,6 @@
 ﻿using System;
+using Greenper.Core.Extensions;
+using Greenper.Core.Models;
 
 namespace Greenper.Core.Attributes
 {
@@ -21,47 +23,19 @@ namespace Greenper.Core.Attributes
         {
             String[] range = columnRange.Split(":");
 
-            Int32 firstIndex = GetColumnIndexFromName(range[0]);
-            Int32 lastIndex = GetColumnIndexFromName(range[1]);
+            Int32 firstIndex = new ColumnWrapper(range[0]).ColumnNumber;
+            Int32 lastIndex = new ColumnWrapper(range[1]).ColumnNumber;
 
             Int32 count = lastIndex - firstIndex + 1;
             String[] columns = new String[count];
 
-            for (Int32 i = firstIndex; i < lastIndex + 1; i++)
+            for (Int32 index = firstIndex; index < lastIndex + 1; index++)
             {
-                columns[i - firstIndex] = GetColumnNameFromIndex(i);
+                var columnWrapper = new ColumnWrapper(index);
+                columns[index - firstIndex] = columnWrapper.ColumnName;
             }
 
             return columns;
-        }
-
-        private Int32 GetColumnIndexFromName(String columnName)
-        {
-            Char[] characters = columnName.ToUpperInvariant().ToCharArray();
-            Int32 sum = 0;
-
-            for (Int32 i = 0; i < characters.Length; i++)
-            {
-                sum *= 26;
-                sum += (characters[i] - 'A' + 1);
-            }
-
-            return sum;
-        }
-
-        private String GetColumnNameFromIndex(Int32 columnNumber)
-        {
-            Int32 dividend = columnNumber;
-            String columnName = String.Empty;
-
-            while (dividend > 0)
-            {
-                Int32 modulo = (dividend - 1) % 26;
-                columnName = Convert.ToChar(65 + modulo) + columnName;
-                dividend = (dividend - modulo) / 26;
-            }
-
-            return columnName;
         }
     }
 }
