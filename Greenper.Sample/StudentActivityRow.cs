@@ -1,5 +1,5 @@
 ﻿using System;
-using Greenper.Attributes;
+using Greenper.Core.Attributes;
 
 namespace Greenper.Sample
 {
