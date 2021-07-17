@@ -12,5 +12,20 @@ namespace Greenper.Core.Extensions
 
             return result;
         }
+
+        public static String NameOfColumn(this Int32 columnIndex)
+        {
+            Int32 dividend = columnIndex;
+            String result = String.Empty;
+
+            while (dividend > 0)
+            {
+                Int32 modulo = (dividend - 1) % 26;
+                result += Convert.ToChar('A' + modulo);
+                dividend = (dividend - modulo) / 26;
+            }
+
+            return result;
+        }
     }
 }
