@@ -1,5 +1,5 @@
 ﻿using System;
-using Greenper.Attributes;
+using Greenper.Core.Attributes;
 
 namespace Greenper.Sample
 {
@@ -11,7 +11,7 @@ namespace Greenper.Sample
         [AssignmentColumn("C")]
         public String Name { get; set; }
 
-        [AssignmentColumns(new []{"D", "E", "F"})]
+        [AssignmentColumns("D:F")]
         public Int32[] Labs { get; set; }
 
         [AssignmentColumn("G")]

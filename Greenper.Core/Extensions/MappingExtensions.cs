@@ -18,7 +18,10 @@ namespace Greenper.Core.Extensions
         {
             var columnIndex = new ColumnIndex(column);
             var indexRange = new IndexRange(range);
-            return row[columnIndex.ColumnName.IndexOfColumn() - indexRange.FirstColumnName.IndexOfColumn()];
+            var currentColumn = new ColumnWrapper(columnIndex.ColumnName);
+            var firstColumn = new ColumnWrapper(indexRange.FirstColumnName);
+
+            return row[currentColumn.ColumnNumber - firstColumn.ColumnNumber];
         }
     }
 }
