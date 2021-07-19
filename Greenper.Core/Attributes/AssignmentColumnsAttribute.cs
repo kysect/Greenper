@@ -1,5 +1,4 @@
 ﻿using System;
-using Greenper.Core.Extensions;
 using Greenper.Core.Models;
 
 namespace Greenper.Core.Attributes

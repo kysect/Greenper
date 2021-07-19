@@ -2,7 +2,7 @@
 
 namespace Greenper.Core.Validation
 {
-    public class ValidationContext<T>
+    internal class ValidationContext<T>
     {
         public Type Model { get; }
 

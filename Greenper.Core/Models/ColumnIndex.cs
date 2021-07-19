@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Greenper.Core.Models
 {
-    public class ColumnIndex
+    internal class ColumnIndex
     {
         public String RawColumn { get; }
 

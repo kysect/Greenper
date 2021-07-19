@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Greenper.Core.Extensions;
-using Greenper.Core.Models;
 using Greenper.Core.Validation;
 
 namespace Greenper.Core.Mapping
 {
-    public class ModelFieldResolver
+    internal class ModelFieldResolver
     {
         public IReadOnlyList<ValidatedModel> Models { get; }
 

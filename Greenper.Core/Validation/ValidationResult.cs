@@ -2,7 +2,7 @@
 
 namespace Greenper.Core.Validation
 {
-    public class ValidationResult
+    internal class ValidationResult
     {
         public List<ValidatedModel> ValidatedModels { get; }
 
