@@ -6,7 +6,7 @@ using Greenper.Core.Validation;
 
 namespace Greenper.Core.Extensions
 {
-    public static class ValidationExtensions
+    internal static class ValidationExtensions
     {
         public static Boolean IsValidColumn(this String column)
         {

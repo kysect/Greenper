@@ -3,7 +3,7 @@ using Greenper.Core.Validation;
 
 namespace Greenper.Core.Mapping
 {
-    public class MappingRequest
+    internal class MappingRequest
     {
         public SheetResponse Sheet { get; }
         public ValidationResult ValidationResult { get; }

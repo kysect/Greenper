@@ -7,7 +7,7 @@ using Greenper.Core.Extensions;
 
 namespace Greenper.Core.Validation
 {
-    public class AssignmentColumnValidator
+    internal class AssignmentColumnValidator
     {
         public ValidationResult Validate<T>(ValidationContext<T> context)
         {
