@@ -1,9 +1,8 @@
 ﻿using System;
-using Greenper.Core.Extensions;
 
 namespace Greenper.Core.Models
 {
-    public class ColumnWrapper
+    internal class ColumnWrapper
     {
         public Int32 ColumnNumber { get; }
         public String ColumnName { get; }

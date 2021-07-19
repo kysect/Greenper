@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Greenper.Core.Extensions
 {
-    public static class IndexExtensions
+    internal static class IndexExtensions
     {
         public static String TakeAfter(this String str, Char limiter, Func<Char, Boolean> predicate) =>
             new String(str.SkipWhile(c => c != limiter && predicate(c)).Skip(1).ToArray());
