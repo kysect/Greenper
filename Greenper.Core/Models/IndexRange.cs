@@ -3,7 +3,7 @@ using Greenper.Core.Extensions;
 
 namespace Greenper.Core.Models
 {
-    public class IndexRange
+    internal class IndexRange
     {
         public String RawRange { get; }
 

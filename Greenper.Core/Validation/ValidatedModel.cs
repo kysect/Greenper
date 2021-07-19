@@ -2,7 +2,7 @@
 
 namespace Greenper.Core.Validation
 {
-    public class ValidatedModel
+    internal class ValidatedModel
     {
         public String ColumnIndex { get; }
         public Type ValueType { get; }
