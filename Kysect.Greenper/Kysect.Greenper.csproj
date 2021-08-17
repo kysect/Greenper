@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Title>Kysect.Greenper</Title>
+    <Authors>Kysect</Authors>
+    <Description>Library for converting data from Google Sheets to objects</Description>
+    <RepositoryUrl>https://github.com/kysect/Greenper</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>GoogleSheets</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
