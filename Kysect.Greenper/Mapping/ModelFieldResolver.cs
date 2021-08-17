@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Greenper.Extensions;
-using Greenper.Validation;
+using Kysect.Greenper.Extensions;
+using Kysect.Greenper.Validation;
 
-namespace Greenper.Mapping
+namespace Kysect.Greenper.Mapping
 {
     internal class ModelFieldResolver
     {

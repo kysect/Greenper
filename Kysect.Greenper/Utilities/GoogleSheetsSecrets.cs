@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Greenper.Providers
+namespace Kysect.Greenper.Providers
 {
     public class GoogleSheetsSecrets
     {

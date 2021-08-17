@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30803.129
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OopSubmitStatistic", "OopSubmitStatistic\OopSubmitStatistic.csproj", "{C981A1AA-CF41-4807-9BE3-AFC61923C15D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Greenper.Sample", "Greenper.Sample\Greenper.Sample.csproj", "{1C2A524A-DFB0-4DE2-A87A-98E991119922}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kysect.Greenper.Sample", "Kysect.Greenper.Sample\Kysect.Greenper.Sample.csproj", "{1C2A524A-DFB0-4DE2-A87A-98E991119922}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Greenper", "Greenper\Greenper.csproj", "{4694EBAF-2A65-4CE8-A606-2449D2BC809F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kysect.Greenper", "Kysect.Greenper\Kysect.Greenper.csproj", "{4694EBAF-2A65-4CE8-A606-2449D2BC809F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Microsoft.Extensions.Configuration;
 
-namespace Greenper.Providers
+namespace Kysect.Greenper.Providers
 {
     public class GreenperSecretsProvider
     {

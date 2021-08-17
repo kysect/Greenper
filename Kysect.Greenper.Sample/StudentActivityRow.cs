@@ -1,7 +1,7 @@
 ﻿using System;
-using Greenper.Attributes;
+using Kysect.Greenper.Attributes;
 
-namespace Greenper.Sample
+namespace Kysect.Greenper.Sample
 {
     public class StudentActivityRow
     {
