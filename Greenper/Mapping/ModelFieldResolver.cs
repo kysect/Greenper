@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Greenper.Core.Extensions;
-using Greenper.Core.Validation;
+using Greenper.Extensions;
+using Greenper.Validation;
 
-namespace Greenper.Core.Mapping
+namespace Greenper.Mapping
 {
     internal class ModelFieldResolver
     {
@@ -17,7 +17,7 @@ namespace Greenper.Core.Mapping
             Models = models;
         }
 
-        public Object ResolveForSingleValue(IList<Object> row, String range)
+        public Object ResolveForSingleValue(IReadOnlyList<Object> row, String range)
         {
             Object cellValue = Models.Single().ColumnIndex.GetValueForCell(range, row);
             var parsedCellValue = Convert.ChangeType(cellValue, Models.Single().ValueType);
@@ -25,11 +25,11 @@ namespace Greenper.Core.Mapping
             return parsedCellValue;
         }
 
-        public ICollection ResolveForManyValues(PropertyInfo property, IList<Object> row, String range) => property.PropertyType.BaseType == typeof(Array)
+        public ICollection ResolveForManyValues(PropertyInfo property, IReadOnlyList<Object> row, String range) => property.PropertyType.BaseType == typeof(Array)
             ? ResolveForArray(property.PropertyType.GetElementType(), row, range)
             : ResolveForCollection(property.PropertyType, row, range);
 
-        private ICollection ResolveForArray(Type type, IList<Object> row, String range)
+        private ICollection ResolveForArray(Type type, IReadOnlyList<Object> row, String range)
         {
             var array = Array.CreateInstance(type, Models.Count);
             for (var modelIndex = 0; modelIndex < Models.Count; modelIndex++)
@@ -43,7 +43,7 @@ namespace Greenper.Core.Mapping
             return array;
         }
 
-        private ICollection ResolveForCollection(Type type, IList<Object> row, String range)
+        private ICollection ResolveForCollection(Type type, IReadOnlyList<Object> row, String range)
         {
             var collection = Activator.CreateInstance(type) ?? 
                              throw new ArgumentException($"Could not create instance of type {type}.");

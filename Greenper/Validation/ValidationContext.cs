@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Greenper.Core.Validation
+namespace Greenper.Validation
 {
     internal class ValidationContext<T>
     {

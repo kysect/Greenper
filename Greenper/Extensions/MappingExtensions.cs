@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Greenper.Core.Models;
-using Greenper.Core.Validation;
+using Greenper.Models;
+using Greenper.Validation;
 
-namespace Greenper.Core.Extensions
+namespace Greenper.Extensions
 {
     internal static class MappingExtensions
     {
@@ -13,7 +13,7 @@ namespace Greenper.Core.Extensions
             validatedModels.Where(model => model.Name == propertyName)
                 .ToList();
 
-        public static Object GetValueForCell(this String column, String range, IList<Object> row)
+        public static Object GetValueForCell(this String column, String range, IReadOnlyList<Object> row)
         {
             var columnIndex = new ColumnIndex(column);
             var indexRange = new IndexRange(range);

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Greenper.Core.Validation;
+using Greenper.Validation;
 
-namespace Greenper.Core.Extensions
+namespace Greenper.Extensions
 {
     internal static class ValidationExtensions
     {

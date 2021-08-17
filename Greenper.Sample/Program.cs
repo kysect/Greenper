@@ -1,7 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
-using Greenper.Adapters.GoogleSheets;
-using Greenper.Core;
+﻿using System.Threading.Tasks;
+using Kysect.CentumFramework.Utility;
 
 namespace Greenper.Sample
 {
@@ -9,7 +7,14 @@ namespace Greenper.Sample
     {
         static async Task Main(string[] args)
         {
-            var mappingResult = await new Mapper().Map<StudentActivityRow>("1g2NCYFTBjw0CwyyMfl8wliYENStSoC3ws5S7nO7A4OQ", "Лист1!B2:H10");
+            var mappingResult = await 
+                new Mapper(AuthorisationService.Create(
+                        "APPLICATION_NAME", 
+                        "", 
+                        "API_KEY", 
+                        "", 
+                        new[]{ Scope.DriveReadonly, Scope.SpreadsheetsReadonly }))
+                .Map<StudentActivityRow>("1uIdb0zKzFc3MgWafah4XAP1o7Q2dXJK5oGXLXLUoIu8", "Лист1!A2:E11");
         }
     }
 }

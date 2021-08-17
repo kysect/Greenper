@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Greenper.Core.Models
+namespace Greenper.Models
 {
     internal class ColumnWrapper
     {
