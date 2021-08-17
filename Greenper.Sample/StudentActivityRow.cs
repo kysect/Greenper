@@ -1,23 +1,17 @@
 ﻿using System;
-using Greenper.Core.Attributes;
+using Greenper.Attributes;
 
 namespace Greenper.Sample
 {
     public class StudentActivityRow
     {
-        [AssignmentColumn("B")]
-        public String UniversitySystemId { get; set; }
-
-        [AssignmentColumn("C")]
+        [AssignmentColumn("A")]
         public String Name { get; set; }
 
-        [AssignmentColumns("D:F")]
+        [AssignmentColumns("B:D")]
         public Int32[] Labs { get; set; }
-
-        [AssignmentColumn("G")]
-        public Int32 Exam { get; set; }
-
-        [AssignmentColumn("H")]
+        
+        [AssignmentColumn("E")]
         public Int32 Total { get; set; }
     }
 }

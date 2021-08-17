@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Greenper.Core.Mapping
+namespace Greenper.Mapping
 {
     public class MappingResult<T>
     {

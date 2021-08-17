@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Greenper.Adapters.GoogleSheets.Models
+namespace Greenper.Providers
 {
     public class GoogleSheetsSecrets
     {
