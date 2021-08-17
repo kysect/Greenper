@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Greenper.Core.Attributes;
-using Greenper.Core.Extensions;
+using Greenper.Attributes;
+using Greenper.Extensions;
 
-namespace Greenper.Core.Validation
+namespace Greenper.Validation
 {
     internal class AssignmentColumnValidator
     {

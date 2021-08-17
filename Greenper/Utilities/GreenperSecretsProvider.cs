@@ -1,9 +1,7 @@
 ﻿using System.IO;
-using System.Linq;
-using Greenper.Adapters.GoogleSheets.Models;
 using Microsoft.Extensions.Configuration;
 
-namespace Greenper.Adapters.GoogleSheets.Providers
+namespace Greenper.Providers
 {
     public class GreenperSecretsProvider
     {
@@ -14,5 +12,15 @@ namespace Greenper.Adapters.GoogleSheets.Providers
                 .AddUserSecrets<GoogleSheetsSecrets>()
                 .Build();
         }
+
+        public static string ApplicationName => 
+            GetGoogleSheetsSecrets()
+            .GetSection("GoogleSheetsSecrets:ApplicationName")
+            .Value;
+
+        public static string ApiKey => 
+            GetGoogleSheetsSecrets()
+            .GetSection("GoogleSheetsSecrets:ApiKey")
+            .Value;
     }
 }

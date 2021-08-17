@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Greenper.Core.Validation
+namespace Greenper.Validation
 {
     internal class ValidationResult
     {

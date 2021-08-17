@@ -1,7 +1,7 @@
 ﻿using System;
-using Greenper.Core.Models;
+using Greenper.Models;
 
-namespace Greenper.Core.Attributes
+namespace Greenper.Attributes
 {
     [AttributeUsage(AttributeTargets.Property)]
     public class AssignmentColumnsAttribute : Attribute
