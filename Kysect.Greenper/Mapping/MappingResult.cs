@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Greenper.Mapping
+namespace Kysect.Greenper.Mapping
 {
     public class MappingResult<T>
     {

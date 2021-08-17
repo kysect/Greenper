@@ -1,7 +1,7 @@
 ﻿using System;
-using Greenper.Extensions;
+using Kysect.Greenper.Extensions;
 
-namespace Greenper.Models
+namespace Kysect.Greenper.Models
 {
     internal class IndexRange
     {

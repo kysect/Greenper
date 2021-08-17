@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Greenper.Validation;
+using Kysect.Greenper.Validation;
 
-namespace Greenper.Mapping
+namespace Kysect.Greenper.Mapping
 {
     internal class MappingRequest
     {

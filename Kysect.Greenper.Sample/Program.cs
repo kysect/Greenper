@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Kysect.CentumFramework.Utility;
 
-namespace Greenper.Sample
+namespace Kysect.Greenper.Sample
 {
     class Program
     {

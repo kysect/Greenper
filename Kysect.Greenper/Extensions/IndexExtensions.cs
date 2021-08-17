@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Greenper.Extensions
+namespace Kysect.Greenper.Extensions
 {
     internal static class IndexExtensions
     {

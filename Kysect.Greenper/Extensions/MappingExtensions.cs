@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Greenper.Models;
-using Greenper.Validation;
+using Kysect.Greenper.Models;
+using Kysect.Greenper.Validation;
 
-namespace Greenper.Extensions
+namespace Kysect.Greenper.Extensions
 {
     internal static class MappingExtensions
     {

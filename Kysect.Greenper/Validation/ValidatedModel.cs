@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Greenper.Validation
+namespace Kysect.Greenper.Validation
 {
     internal class ValidatedModel
     {

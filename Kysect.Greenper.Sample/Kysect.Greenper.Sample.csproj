@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Greenper\Greenper.csproj" />
+    <ProjectReference Include="..\Kysect.Greenper\Kysect.Greenper.csproj" />
   </ItemGroup>
 
 </Project>

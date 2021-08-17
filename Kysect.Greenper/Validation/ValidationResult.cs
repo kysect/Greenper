@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Greenper.Validation
+namespace Kysect.Greenper.Validation
 {
     internal class ValidationResult
     {

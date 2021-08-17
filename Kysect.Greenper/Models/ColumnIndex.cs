@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Greenper.Models
+namespace Kysect.Greenper.Models
 {
     internal class ColumnIndex
     {
