@@ -64,23 +64,23 @@ namespace Kysect.Greenper.Mapping
         private Object ChangeType(Object value, Type type)
         {
             Object result;
-            
-            try
+
+            if (type.IsValueType)
+            {
+                try
+                {
+                    result = Convert.ChangeType(value.ToString()?.Replace(",", "."), type);
+                }
+                catch (Exception)
+                {
+                    result = default;
+                }
+            }
+            else
             {
                 result = Convert.ChangeType(value, type);
             }
-            catch (Exception)
-            {
-                if (type.IsValueType)
-                {
-                    result = 0;
-                }
-                else
-                {
-                    result = null;
-                }
-            }
-
+            
             return result;
         }
     }
