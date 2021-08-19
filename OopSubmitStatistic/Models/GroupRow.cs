@@ -6,8 +6,8 @@ namespace OopSubmitStatistic.Models
 {
     public class GroupRow
     {
-        public string Group { get; set; }
-        public List<StudentRow> Students { get; set; }
+        public string Group { get; }
+        public List<StudentRow> Students { get; }
 
         public GroupRow(string @group, List<StudentRow> students)
         {
@@ -20,7 +20,7 @@ namespace OopSubmitStatistic.Models
             return (double) data.Count(predicate) / data.Count() * 100;
         }
 
-        public double AverageSum => Students.Average(s => s.Sum);
+        public double AverageTotal => Students.Average(s => s.Total);
         public double AverageExam
         {
             get
@@ -31,8 +31,8 @@ namespace OopSubmitStatistic.Models
             }
         }
 
-        public double Below40Points => Percent(Students, s => s.Sum < 40);
-        public double Between40And60 => Percent(Students, s => s.Sum >= 40 && s.Sum < 60);
-        public double Pass60Points => Percent(Students, s => s.Sum >= 60);
+        public double Below40Points => Percent(Students, s => s.Total < 40);
+        public double Between40And60 => Percent(Students, s => s.Total >= 40 && s.Total < 60);
+        public double Pass60Points => Percent(Students, s => s.Total >= 60);
     }
 }
