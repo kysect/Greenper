@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Kysect.Greenper" Version="1.0.0" />
+    <PackageReference Include="Kysect.Greenper" Version="1.0.2" />
     <PackageReference Include="Spectre.Console" Version="0.36.0" />
   </ItemGroup>
 
