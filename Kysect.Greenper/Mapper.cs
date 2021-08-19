@@ -78,6 +78,8 @@ namespace Kysect.Greenper
                         .ValidationResult
                         .ValidatedModels
                         .GetValidatedModelsForProperty(property.Name);
+                    
+                    if (validatedModels.Count == 0) continue;
 
                     var fieldResolver = new ModelFieldResolver(validatedModels);
 
