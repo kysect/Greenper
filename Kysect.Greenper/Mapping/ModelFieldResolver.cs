@@ -20,7 +20,7 @@ namespace Kysect.Greenper.Mapping
         public Object ResolveForSingleValue(IReadOnlyList<Object> row, String range)
         {
             Object cellValue = Models.Single().ColumnIndex.GetValueForCell(range, row);
-            var parsedCellValue = Convert.ChangeType(cellValue, Models.Single().ValueType);
+            var parsedCellValue = ChangeType(cellValue, Models.Single().ValueType);
 
             return parsedCellValue;
         }
@@ -35,7 +35,7 @@ namespace Kysect.Greenper.Mapping
             for (var modelIndex = 0; modelIndex < Models.Count; modelIndex++)
             {
                 Object cellValue = Models[modelIndex].ColumnIndex.GetValueForCell(range, row);
-                var parsedCellValue = Convert.ChangeType(cellValue, Models[modelIndex].ValueType);
+                var parsedCellValue = ChangeType(cellValue, Models[modelIndex].ValueType);
 
                 array.SetValue(parsedCellValue, modelIndex);
             }
@@ -53,12 +53,35 @@ namespace Kysect.Greenper.Mapping
             foreach (var model in Models)
             {
                 Object cellValue = model.ColumnIndex.GetValueForCell(range, row);
-                var parsedCellValue = Convert.ChangeType(cellValue, model.ValueType);
-
+                var parsedCellValue = ChangeType(cellValue, model.ValueType);
+                
                 addMethod.Invoke(collection, new Object[] { parsedCellValue });
             }
             
             return (ICollection)collection;
+        }
+
+        private Object ChangeType(Object value, Type type)
+        {
+            Object result;
+            
+            try
+            {
+                result = Convert.ChangeType(value, type);
+            }
+            catch (Exception)
+            {
+                if (type.IsValueType)
+                {
+                    result = 0;
+                }
+                else
+                {
+                    result = null;
+                }
+            }
+
+            return result;
         }
     }
 }
