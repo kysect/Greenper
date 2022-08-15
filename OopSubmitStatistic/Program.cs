@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using Kysect.CentumFramework.Utility;
+using Kysect.Greenper;
 using OopSubmitStatistic.Models;
 using OopSubmitStatistic.Tables;
 using Spectre.Console;
@@ -10,10 +13,8 @@ namespace OopSubmitStatistic
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            var tableParser = TableParser.Create("");
-
             List<StudentRow> result = new List<StudentRow>();
             var groupList = new List<string>
             {
@@ -31,21 +32,28 @@ namespace OopSubmitStatistic
                 "M3212",
             };
 
+            var authorisationService = AuthorisationService.Create(
+                "APPLICATION_NAME",
+                "",
+                "API_KEY",
+                "",
+                new[] {Scope.DriveReadonly, Scope.SpreadsheetsReadonly});
+
+            var mapper = new Mapper(authorisationService);
+            
             foreach (var group in groupList)
             {
-                var googleTableData = new GoogleTableData(
-                    "1H75MoSvL-165x5aM-p26eFZcY57UYx0gPtOHhvpGYGw",
-                    group,
-                    "4",
-                    "28",
-                    new[] { "A" },
-                    "Y");
-                var markParser = new MarkParser(googleTableData);
-                List<StudentRow> studentSubjectScores = tableParser.Execute(markParser);
-                result.AddRange(studentSubjectScores);
+                var mappingResult = await mapper.Map<StudentRow>("1H75MoSvL-165x5aM-p26eFZcY57UYx0gPtOHhvpGYGw", group + "!A4:Y28");
+
+                foreach (var mappedModel in mappingResult.MappedModels)
+                {
+                    mappedModel.Group = group;
+                }
+                
+                result.AddRange(mappingResult.MappedModels);
             }
 
-            var ignores = File.ReadAllLines("ignore.txt");
+            var ignores = await File.ReadAllLinesAsync("ignore.txt");
 
             result = result
                 .Where(s => !ignores.Contains(s.Name))

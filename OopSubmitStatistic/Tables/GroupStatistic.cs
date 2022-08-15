@@ -38,11 +38,11 @@ namespace OopSubmitStatistic.Tables
 
         public void Generate()
         {
-            foreach (GroupRow groupRow in Groups.OrderByDescending(g => g.AverageSum))
+            foreach (GroupRow groupRow in Groups.OrderByDescending(g => g.AverageTotal))
             {
                 Table.AddRow(
                     groupRow.Group,
-                    groupRow.Students.Average(s => s.Sum).ToString("F2"),
+                    groupRow.Students.Average(s => s.Total).ToString("F2"),
                     groupRow.AverageExam.ToString("F2"),
                     (groupRow.Below40Points).ToString("F0"),
                     (groupRow.Between40And60).ToString("F0"),
@@ -53,7 +53,7 @@ namespace OopSubmitStatistic.Tables
             {
                 Table2.AddRow(
                     groupRow.Group,
-                    groupRow.Students.Average(s => s.Sum).ToString("F2"),
+                    groupRow.Students.Average(s => s.Total).ToString("F2"),
                     groupRow.AverageExam.ToString("F2"),
                     (groupRow.Below40Points).ToString("F0"),
                     (groupRow.Between40And60).ToString("F0"),
